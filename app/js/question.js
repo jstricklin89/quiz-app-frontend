@@ -1,5 +1,5 @@
 class Question {
-  constructor(name, ac_1, ac_2, ac_3, correct_answer, cat_id) {
+  constructor(question) {
     this.name = question.name;
     this.ac_1 = question.ac_1;
     this.ac_2 = question.ac_2;

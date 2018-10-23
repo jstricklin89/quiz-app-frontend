@@ -19,4 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
         ).innerHTML += newQuestion.showQuestion();
       });
     });
+
+  const categoryURL = "http://localhost:3000/api/v1/categories";
+  fetch(categoryURL)
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(category => {
+        const newCategory = new Category(category);
+        document.getElementById(
+          "category"
+        ).innerHTML += newCategory.showCategory();
+      });
+    });
+  const answeredQuestionURL = "http://localhost:3000/api/v1/answered_questions";
+  fetch(answeredQuestionURL)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      data.forEach(a_q => {
+        console.log(a_q.user.name);
+        console.log(a_q.question.name);
+        console.log(a_q.user.name);
+        const newAnsweredQuestion = new AnsweredQuestion(a_q);
+        document.getElementById(
+          "answered-question"
+        ).innerHTML += newAnsweredQuestion.showAnsweredQuestion();
+      });
+    });
 });
