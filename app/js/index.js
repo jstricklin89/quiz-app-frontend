@@ -1,5 +1,5 @@
-let questions = []
-let filteredQuestions = []
+let questions = [];
+let filteredQuestions = [];
 document.addEventListener("DOMContentLoaded", () => {
   const userURL = "http://localhost:3000/api/v1/users";
   fetch(userURL)
@@ -39,38 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
         ).innerHTML += newAnsweredQuestion.showAnsweredQuestion();
       });
     });
+  document.getElementById("question-form").style.display = "none";
+  document.getElementById("category-id").style.display = "none";
 });
 
 function createFilteredQuestionsForCategory(event) {
   filteredQuestions = questions.filter(question => {
-    return question.cat_id == parseInt(event.target.dataset.id)
-  })
-  displayQuestion()
+    return question.cat_id == parseInt(event.target.dataset.id);
+  });
+  displayQuestion();
 }
 
 function displayQuestion() {
   if (filteredQuestions.length > 0) {
-    filteredQuestions.shift().showQuestion()
-    submitListener()
+    filteredQuestions.shift().showQuestion();
+    submitListener();
   } else {
-    document.getElementById('question-form').style.display = "none"
+    document.getElementById("question-form").style.display = "none";
   }
 }
 
 function submitListener() {
-  document.addEventListener('submit', (event) => {
-    event.preventDefault()
-    postAnsweredQuestion(event)
-  })
+  document.addEventListener("submit", event => {
+    event.preventDefault();
+    postAnsweredQuestion(event);
+  });
 }
 
 function postAnsweredQuestion(event) {
-  debugger
-  const postQuestionURL = "http://localhost:3000/api/v1/answered_questions"
-  fetch(`postQuestionURL/${event.target.dataset.id}`, {
-
-  })
+  debugger;
+  const postQuestionURL = "http://localhost:3000/api/v1/answered_questions";
+  fetch(`postQuestionURL/${event.target.dataset.id}`, {});
 }
-
-
-
