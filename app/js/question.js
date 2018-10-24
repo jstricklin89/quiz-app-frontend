@@ -10,16 +10,17 @@ class Question {
   }
 
   showQuestion() {
-    question = Question.all[0]
-    q = document.getElementById('inputQuestion1')
-    ac1 = document.getElementById('answerRadio1')
-    ac2 = document.getElementById('answerRadio2')
-    ac3 = document.getElementById('answerRadio3')
-    correctAns = document.getElementById('answerRadio4')
+    const q = document.getElementById('inputQuestion1')
+    const ac1 = document.getElementById('answerText1')
+    const ac2 = document.getElementById('answerText2')
+    const ac3 = document.getElementById('answerText3')
+    const correctAns = document.getElementById('answerText4')
 
-    q.innerHTML = ``
-    
+    q.innerText = `${this.name}`
+    ac1.innerText = `${this.ac_1}`
+    ac2.innerText = `${this.ac_2}`
+    ac3.innerText = `${this.ac_3}`
+    correctAns.innerText = `${this.correct_answer}` 
   }
 }
-
 Question.all = [];

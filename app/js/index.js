@@ -1,3 +1,4 @@
+let questions = []
 document.addEventListener("DOMContentLoaded", () => {
   const userURL = "http://localhost:3000/api/v1/users";
   fetch(userURL)
@@ -13,12 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       data.forEach(question => {
-        const newQuestion = new Question(question);
-        // document.getElementById(
-        //   "question"
-        // ).innerHTML += newQuestion.showQuestion();
+        questions.push(new Question(question))
       });
-    });
+    })
   const categoryURL = "http://localhost:3000/api/v1/categories";
   fetch(categoryURL)
     .then(response => response.json())
@@ -42,3 +40,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 });
+
+
