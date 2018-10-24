@@ -15,12 +15,14 @@ class Question {
     const ac2 = document.getElementById('answerText2')
     const ac3 = document.getElementById('answerText3')
     const correctAns = document.getElementById('answerText4')
+    const qButton = document.getElementById('question-submit')
 
     q.innerText = `${this.name}`
     ac1.innerText = `${this.ac_1}`
     ac2.innerText = `${this.ac_2}`
     ac3.innerText = `${this.ac_3}`
-    correctAns.innerText = `${this.correct_answer}` 
+    correctAns.innerText = `${this.correct_answer}`
+    qButton.innerHTML =  `<button type="submit" id="question-submit" data-id="${this.cat_id}"class="btn btn-primary">Submit</button>`
   }
 }
 Question.all = [];
