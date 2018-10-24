@@ -14,12 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       data.forEach(question => {
         const newQuestion = new Question(question);
-        document.getElementById(
-          "question"
-        ).innerHTML += newQuestion.showQuestion();
+        // document.getElementById(
+        //   "question"
+        // ).innerHTML += newQuestion.showQuestion();
       });
     });
-
   const categoryURL = "http://localhost:3000/api/v1/categories";
   fetch(categoryURL)
     .then(response => response.json())
@@ -35,11 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(answeredQuestionURL)
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       data.forEach(a_q => {
-        console.log(a_q.user.name);
-        console.log(a_q.question.name);
-        console.log(a_q.user.name);
         const newAnsweredQuestion = new AnsweredQuestion(a_q);
         document.getElementById(
           "answered-question"

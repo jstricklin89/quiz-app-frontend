@@ -8,14 +8,17 @@ class Question {
     this.cat_id = question.cat_id;
     Question.all.push(this);
   }
+
   showQuestion() {
-    return `<p>${this.name}</p>
-      <p>${this.cat_id}</p>
-      <p>${this.ac_1}</p>
-      <p>${this.ac_2}</p>
-      <p>${this.ac_3}</p>
-      <p>${this.correct_answer}</p>
-      `;
+    question = Question.all[0]
+    q = document.getElementById('inputQuestion1')
+    ac1 = document.getElementById('answerRadio1')
+    ac2 = document.getElementById('answerRadio2')
+    ac3 = document.getElementById('answerRadio3')
+    correctAns = document.getElementById('answerRadio4')
+
+    q.innerHTML = ``
+    
   }
 }
 
