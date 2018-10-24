@@ -2,6 +2,7 @@ class Category {
   constructor(category) {
     this.name = category.name;
     this.img = category.img;
+    this.id = category.id;
     Category.all.push(this);
   }
 
@@ -16,10 +17,10 @@ class Category {
         this.img
       }" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title" value="${this.name}"></h5>
-        <button class="btn btn-primary quiz-btn" onClick="showQuestionsForCategory(${
+        <h5 class="card-title">${this.name}</h5>
+        <button class="btn btn-primary quiz-btn" onClick="showQuestionsForCategory" data-id="${
           this.id
-        })"data-id="${this.id}">Play Quiz
+        }">Play Quiz
         </button>
       </div>
     </div>`;
