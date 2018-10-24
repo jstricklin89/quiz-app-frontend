@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       data.forEach(user => {
         const newUser = new User(user);
-        document.getElementById("user-list").innerHTML += newUser.showUser();
+        // document.getElementById("user-list").innerHTML += newUser.showUser();
       });
     });
   const questionURL = "http://localhost:3000/api/v1/questions";
@@ -34,11 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       data.forEach(a_q => {
         const newAnsweredQuestion = new AnsweredQuestion(a_q);
-        document.getElementById(
-          "answered-question"
-        ).innerHTML += newAnsweredQuestion.showAnsweredQuestion();
+        // document.getElementById(
+        //   "answered-question"
+        // ).innerHTML += newAnsweredQuestion.showAnsweredQuestion();
       });
     });
+    // document.getElementById('question-form').style.display = "none"
+    // document.getElementById('category-id').style.display = "none"
 });
 
 function createFilteredQuestionsForCategory(event) {
@@ -65,10 +67,18 @@ function submitListener() {
 }
 
 function postAnsweredQuestion(event) {
+  const body = {
+
+  }
   debugger
   const postQuestionURL = "http://localhost:3000/api/v1/answered_questions"
   fetch(`postQuestionURL/${event.target.dataset.id}`, {
-
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(body),
   })
 }
 
