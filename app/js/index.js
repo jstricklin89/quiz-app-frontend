@@ -15,18 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       data.forEach(question => {
-        questions.push(new Question(question))
+        questions.push(new Question(question));
       });
-    })
+    });
+
   const categoryURL = "http://localhost:3000/api/v1/categories";
   fetch(categoryURL)
     .then(response => response.json())
     .then(data => {
       data.forEach(category => {
         const newCategory = new Category(category);
-        document.getElementById(
-          "category"
-        ).innerHTML += newCategory.showCategory();
+        newCategory.showCategory();
       });
     });
   const answeredQuestionURL = "http://localhost:3000/api/v1/answered_questions";

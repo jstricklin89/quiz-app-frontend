@@ -25,4 +25,5 @@ class Question {
     qButton.innerHTML =  `<button type="submit" id="question-submit" data-id="${this.cat_id}"class="btn btn-primary">Submit</button>`
   }
 }
+
 Question.all = [];
