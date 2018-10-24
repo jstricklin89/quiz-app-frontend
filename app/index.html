@@ -41,22 +41,14 @@
   <h3>Users</h3>
   <ul id='user-list'></ul>
 
-  <h3>Categories</h3>
-  <div id='category'></div>
-
   <h3>Questions</h3>
   <div id='question'></div>
 
-  here we want to put
-  <div id="answered-question"></div>
-  <div class="card-columns">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src=`${category.img}` alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <a id=`${category.id}` class="btn btn-primary">Play Quiz</a>
-      </div>
-    </div>
+  <h3>Answered Questions</h3>
+  <div id='answered-question'></div>
+
+  <div class="card-columns" id="category-id">
+
   </div>
 
   <span class="border border-danger">
@@ -71,30 +63,29 @@
           <div class="col-lg-8">
             <div class="form-check">
               <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio1" value="option1" checked>
-              <label class="form-check-label" for="answerRadio1">
+              <label class="form-check-label" id="answerText1" for="answerRadio1">
                 Inside which HTML element do we put the JavaScript?
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio2" value="option2">
-              <label class="form-check-label" for="answerRadio2">
+              <label class="form-check-label" id="answerText2" for="answerRadio2">
                 Second radio
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio3" value="option3">
-              <label class="form-check-label" for="answerRadio3">
+              <label class="form-check-label" id="answerText3" for="answerRadio3">
                 Third radio
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio4" value="option3">
-              <label class="form-check-label" for="answerRadio4">
+              <label class="form-check-label" id="answerText4" for="answerRadio4">
                 Fourth radio
               </label>
             </div>
           </div>
-        </div>
       </fieldset>
       <div class="form-group row">
         <div class="col-sm-10">
