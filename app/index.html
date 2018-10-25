@@ -37,12 +37,7 @@
   <div class="title centered">
     <h1 class="text-center">QuizApp</h1>
   </div>
-
-  <h3>Login Form HTML</h3>
-  <!-- login or create login based on the event listeners on the nav bar buttons.  -->
-  <!-- show and hide based on the event listeners -->
-  <!-- need to post the value in the form on submit: event.target.value or whatever....if you can see the value so you can use it then good. -->
-
+ 
   <div id="login">
     <h3 class="text-center text-white pt-5">Login form</h3>
     <div class="container">
@@ -70,7 +65,7 @@
   <div class="card-columns" id="category-id">
   </div>
 
-  <form class="col-lg-16 offset-lg-3" id="question-form">
+  <form class="col-lg-16 offset-lg-3" id="question-form" data-id="none">
     <div class="form-group row">
       <label id="inputQuestion1" class="col-lg-8 col-form-label">Insert question here</label>
     </div>
@@ -79,25 +74,25 @@
         <legend class="col-form-label"></legend>
         <div class="col-lg-8">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio1" value="option1" checked>
+            <input class="form-check-input" type="radio" name="answerRadios" onClick=radioEvent(event) id="answerRadio1" data-id="incorrect" value="option1" checked>
             <label class="form-check-label" id="answerText1" for="answerRadio1">
               First radio text
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio2" value="option2">
+            <input class="form-check-input" type="radio" name="answerRadios" onClick=radioEvent(event) id="answerRadio2" data-id="incorrect" value="option2">
             <label class="form-check-label" id="answerText2" for="answerRadio2">
               Second radio text
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio3" value="option3">
+            <input class="form-check-input" type="radio" name="answerRadios" onClick=radioEvent(event) id="answerRadio3" data-id="incorrect" value="option3">
             <label class="form-check-label" id="answerText3" for="answerRadio3">
               Third radio text
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="answerRadio" id="answerRadio4" value="option3">
+            <input class="form-check-input" type="radio" name="answerRadios" onClick=radioEvent(event) id="answerRadio4" data-id="incorrect" value="option3">
             <label class="form-check-label" id="answerText4" for="answerRadio4">
               Fourth radio text
             </label>
