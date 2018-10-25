@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       data.forEach(user => {
         const newUser = new User(user);
-        // document.getElementById("user-list").innerHTML += newUser.showUser();
       });
     });
   const questionURL = "http://localhost:3000/api/v1/questions";
@@ -37,9 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       data.forEach(a_q => {
         const newAnsweredQuestion = new AnsweredQuestion(a_q);
-        // document.getElementById(
-        //   "answered-question"
-        // ).innerHTML += newAnsweredQuestion.showAnsweredQuestion();
       });
     });
     document.getElementById('question-form').style.display = "none"
@@ -55,18 +51,16 @@ function createFilteredQuestionsForCategory(event) {
   //executes next function and shows the question form
   console.log(filteredQuestions)
   displayQuestion();
+  submitListener();
   document.getElementById('question-form').style.display = "block"
 }
 //if questions are still left in global array variable they will be removed, shown and start submit listener for question
 function displayQuestion() {
   if (filteredQuestions.length > 0) {
     filteredQuestions.shift().showQuestion();
-    submitListener();
     console.log(filteredQuestions)
-    debugger
     //otherwise user will be alerted quiz is complete, hides the question form, and empties global variables
   } else {
-    debugger
     alert('Quiz Complete! Select another quiz by category if you want to play again.')
     document.getElementById("question-form").style.display = "none";
     filteredQuestions = []
@@ -81,7 +75,6 @@ function radioEvent(event) {
 function submitListener() {
   document.addEventListener("submit", event => {
     event.preventDefault();
-    console.log('submitlistener')
     postAnsweredQuestion(event);
   });
 }
@@ -92,7 +85,6 @@ function postAnsweredQuestion(event) {
     question_id: parseInt(event.target.dataset.id),
     correct_answer: selectedRadioQId === "incorrect" ? 0 : 1
   }
-  console.log(body)
   fetch(`http://localhost:3000/api/v1/answered_questions`, {
     method: 'POST',
     headers: {
@@ -100,5 +92,5 @@ function postAnsweredQuestion(event) {
       Accept: 'application/json',
     },
     body: JSON.stringify(body),
-  }).then(() => displayQuestion()).then(console.log('posted'))
+  }).then(() => displayQuestion())
 }
