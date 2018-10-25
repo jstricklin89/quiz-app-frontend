@@ -1,6 +1,5 @@
 let questions = [];
 let filteredQuestions = [];
-let users = [];
 let loggedInUser = 1;
 let selectedRadioQId = "incorrect";
 
@@ -42,42 +41,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   document.getElementById("question-form").style.display = "none";
   document.getElementById("category-id").style.display = "none";
+  document.getElementById('login-form').style.display = "none";
 });
+function showHideCategories() {
+  let catCards = document.getElementById("category-id")
+  catCards.style.display = "none" ? catCards.style.display = "block" : catCards.style.display = "none"
+}
 
 function showLogin() {
-  const signUp = document.getElementById("sign-up");
-  const login = document.getElementById("login");
-  const logout = document.getElementById("logout");
-  const navbarNav = document.getElementById("navbarNav");
-  // navbarNav.addEventListener("click", function(event) {
-  //   console.log("CLICKED");
-  // });
+  const loginForm = document.getElementById('login-form')
+  const loginButton = document.getElementById('login-button')
 
   if (event.target.id === "sign-up") {
-    ///the top part is SIMPLY showing/hiding the correct form and form text.
-    //use validation, not authentication. the validation will prevent duplicates in the database. when you do a fetch .then() you should do a .catch() which catches errors. Don't do a .then() and just leave it b/c need a .catch() after that.
-    //this should be done after the event listener for the login button.
-    //maybe use cookies to keep someone logged in on the front end. It's easy to implement in JS.
-    id = event.target.dataset;
-    fetch("http://localhost:3000/api/v1/users/"`${id}`);
-    //this is going to be a post. It will take the event value when you hit submit and post it.
-    //on signup it will be a post after you create a new user on the JavaScript side. new user and feed in target value of name. It'll create a user on the JS side and on the backend side. After it posts to back end and creats a user in the JS User Class, you want to store that user as loggedInUser.
-    console.log("SIGNUP CLICKED");
+    loginForm.style.display = "block"
+    document.getElementById('login-header').innerText = 'Create Login'
+    loginButton.value = 'Create Login'
+    loginForm.addEventListener('submit', () => {
+      event.preventDefault()
+      authenticateUser(event)
+      document.getElementById('login-form').style.display = "none";
+    })
   } else if (event.target.id === "login") {
-    //this goes into a user creation/user login function: it's going to compare the data value to the user's array (up top).
-    //I'm simply making the login form look corretly here.
-    console.log("LOGIN CLICKED");
+    loginForm.style.display = "block"
+    document.getElementById('login-header').innerText = 'Login'
+    loginButton.value = 'Login'
+    loginForm.addEventListener('submit', () => {
+      event.preventDefault()
+      authenticateUser(event)
+      document.getElementById('login-form').style.display = "none";
+    })
   } else if (event.target.id === "logout") {
     console.log("LOGOUT CLICKED");
-    //when logout happens we are going to remove the loggedInUser and hide both of the page elements.
+    loggedInUser = ""
     document.getElementById("question-form").style.display = "none";
     document.getElementById("category-id").style.display = "none";
   }
-  if (user) {
-    //use an if statment to show the displays once the user is logged in.
-    document.getElementById("question-form").style.display = "block";
-    document.getElementById("category-id").style.display = "block";
+  //use an if statment to show the displays once the user is logged in.
+}
+
+function authenticateUser(event) {
+  const body = {
+    name: event.target.username.value
   }
+  fetch("http://localhost:3000/api/v1/users/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify(body),
+  }).then(r => r.json())
+  .then(user => loggedInUser = user.id)
+  .then(event.target.reset())
+  .then(() => showHideCategories())
 }
 
 //this executes when a category button is clicked
@@ -90,6 +106,7 @@ function createFilteredQuestionsForCategory(event) {
   console.log(filteredQuestions);
   displayQuestion();
   submitListener();
+  event.preventDefault();
   document.getElementById('question-form').style.display = "block"
 }
 //if questions are still left in global array variable they will be removed, shown and start submit listener for question
@@ -113,10 +130,10 @@ function radioEvent(event) {
 }
 //executed from displayQuestion(). starts submit listener on question, prevents refresh, and executes next function
 function submitListener() {
-  document.addEventListener("submit", event => {
-    event.preventDefault();
-    postAnsweredQuestion(event);
-  });
+  document.getElementById('question-form').addEventListener('submit', function(event) {
+    event.preventDefault()
+    postAnsweredQuestion(event)
+  })
 }
 //posts each answered question to the database via post request. uses global loggedinuser variable. then executes displayQuestion() again.
 function postAnsweredQuestion(event) {
