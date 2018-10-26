@@ -8,7 +8,7 @@ function createFilteredQuestionsForCategory(event) {
   displayQuestion();
   submitListener();
   event.preventDefault();
-  document.getElementById('question-form').style.display = "block"
+  document.getElementById("question-form").style.display = "block";
 }
 //if questions are still left in global array variable they will be removed, shown and start submit listener for question
 function displayQuestion() {
@@ -16,7 +16,9 @@ function displayQuestion() {
     filteredQuestions.shift().showQuestion();
     //otherwise user will be alerted quiz is complete, hides the question form, and empties global variables
   } else {
-    alert('Quiz Complete! Select another quiz by category if you want to play again.')
+    alert(
+      "Quiz Complete! Select another quiz by category if you want to play again."
+    );
     questionForm.style.display = "none";
     filteredQuestions = [];
     selectedRadioQId = "incorrect";
@@ -30,10 +32,12 @@ function radioEvent(event) {
 }
 //executed from displayQuestion(). starts submit listener on question, prevents refresh, and executes next function
 function submitListener() {
-  document.getElementById('question-form').addEventListener('submit', function(event) {
-    event.preventDefault()
-    postAnsweredQuestion(event)
-  })
+  document
+    .getElementById("question-form")
+    .addEventListener("submit", function(event) {
+      event.preventDefault();
+      postAnsweredQuestion(event);
+    });
 }
 //posts each answered question to the database via post request. uses global loggedinuser variable. then executes displayQuestion() again.
 function postAnsweredQuestion(event) {
@@ -41,13 +45,20 @@ function postAnsweredQuestion(event) {
     user_id: loggedInUser,
     question_id: parseInt(event.target.dataset.id),
     correct_answer: selectedRadioQId === "incorrect" ? 0 : 1
-  }
+  };
   fetch(`http://localhost:3000/api/v1/answered_questions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
-    body: JSON.stringify(body),
-  }).then(() => displayQuestion())
+    body: JSON.stringify(body)
+  })
+    .then(() => clearRadioButton())
+    .then(() => displayQuestion());
+}
+
+function clearRadioButton() {
+  var ele = document.getElementsByName("answerRadios");
+  for (var i = 0; i < ele.length; i++) ele[i].checked = false;
 }
