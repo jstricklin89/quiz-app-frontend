@@ -31,16 +31,19 @@
       </ul>
     </div>
     <button class="btn btn-sm btn-outline-info mb-3 mb-md-0 ml-md-3" id="user-stats" type="button">User Stats</button>
-    <button class="btn btn-sm btn-outline-success mb-3 mb-md-0 ml-md-3" id="user-stats" type="button">Leaderboard</button>
+    <button class="btn btn-sm btn-outline-success mb-3 mb-md-0 ml-md-3" id="leaderboard" type="button">Leaderboard</button>
     <button class="btn btn-sm btn-outline-danger mb-3 mb-md-0 ml-md-3" id="logout" onClick="showLogin(event)" type="button">Logout</button>
   </nav>
-  <div class="title centered">
-    <h1 class="text-center">QuizApp</h1>
-  </div>
-  <!-- login or create login based on the event listeners on the nav bar buttons.  -->
-  <!-- show and hide based on the event listeners -->
-  <!-- need to post the value in the form on submit: event.target.value or whatever....if you can see the value so you can use it then good. -->
+  
+  <img src="fonts/quizapp.png" class="rounded mx-auto d-block" style="width:297px;height:86px;"><br><br><br>
 
+  <div class="col-lg-16 offset-lg-3" id="user-stats-div" data-id="none">
+    
+  </div>
+    
+  <div class="col-lg-16 offset-lg-3" id="leaderboard-div" data-id="none">
+    
+  </div>
 
   <div id="login">
     <div class="container">
@@ -53,11 +56,9 @@
                 <label for="username" class="text-info">Username:</label><br>
                 <input type="text" name="username" id="username" class="form-control">
               </div>
-
               <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-info btn-md" id="login-button" value="submit">
               </div>
-
             </form>
           </div>
         </div>
@@ -123,6 +124,7 @@
   <script src="js/fetchobjects.js"></script>
   <script src="js/login.js"></script>
   <script src="js/quiz.js"></script>
+  <script src="js/leaderboard.js"></script>
   <script src="js/oo/answered_question.js"></script>
   <script src="js/oo/category.js"></script>
   <script src="js/oo/question.js"></script>
