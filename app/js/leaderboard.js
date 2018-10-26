@@ -33,10 +33,24 @@ function displayUserStats() {
 
 //add questions right, and questions wrong to the leaderboard div
 function displayLeaderboardStats() { 
+  leaderboardDiv.style.display = "block"
+  document.getElementById('leaderboard-header').style.display = "block"
+  document.getElementById('leaderboard-hide').style.display = "block"
   let correctAnsCount = leaderboardStats.filter(obj => {
-    obj.correct_answer === true
-  }).length
-  console.log(correctAnsCount)
+    return obj.correct_answer === true
+  })
+  leaderboardDiv.innerHTML = `<p>Total Correct Answers: ${correctAnsCount.length}</p>`
+
+  let incorrectAnsCount = leaderboardStats.filter(obj => {
+    return obj.correct_answer === false
+  })
+  leaderboardDiv.innerHTML += `<p>Total Incorrect Answers: ${incorrectAnsCount.length}</p>`
+}
+
+function hideLeaderboard() {
+  leaderboardDiv.style.display = "none"
+  document.getElementById('leaderboard-header').style.display = "none"
+  document.getElementById('leaderboard-hide').style.display = "none"
 }
 
 

@@ -31,7 +31,7 @@
       </ul>
     </div>
     <button class="btn btn-sm btn-outline-info mb-3 mb-md-0 ml-md-3" id="user-stats" type="button">User Stats</button>
-    <button class="btn btn-sm btn-outline-success mb-3 mb-md-0 ml-md-3" id="leaderboard" type="button">Leaderboard</button>
+    <button class="btn btn-sm btn-outline-success mb-3 mb-md-0 ml-md-3" id="leaderboard" onClick="displayLeaderboardStats(event)" type="button">Leaderboard</button>
     <button class="btn btn-sm btn-outline-danger mb-3 mb-md-0 ml-md-3" id="logout" onClick="showLogin(event)" type="button">Logout</button>
   </nav>
 
@@ -41,9 +41,11 @@
 
   </div>
 
+  <h3 class="col-lg-16 offset-lg-3" id="leaderboard-header">Leaderboard Stats</h3><br>
   <div class="col-lg-16 offset-lg-3" id="leaderboard-div" data-id="none">
-
+    
   </div>
+  <button class="btn btn-sm btn-outline-success col-lg-16 offset-lg-3" id="leaderboard-hide" onClick="hideLeaderboard(event)" type="button">Leaderboard</button>
 
   <div id="login">
     <div class="container">

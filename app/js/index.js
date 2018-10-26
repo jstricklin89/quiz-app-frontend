@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchAnsweredQuestions()
   fetchLeaderboardStats()
   //hide questions, categories, and login at pageload
+  leaderboardDiv.style.display = "none"
+  document.getElementById('leaderboard-header').style.display = "none"
+  document.getElementById('leaderboard-hide').style.display = "none"
   questionForm.style.display = "none";
   catCards.style.display = "none";
   document.getElementById('login-form').style.display = "none";
