@@ -24,9 +24,7 @@ function displayQuestion() {
 }
 //captures all question radio events into a global variable. either 'correct' or 'incorrect' via dataset.id
 function radioEvent(event) {
-  event.target.dataset.id === "correct"
-    ? (selectedRadioQId = event.target.dataset.id)
-    : (selectedRadioQId = event.target.dataset.id);
+  selectedRadioQId = event.target.dataset.id;
 }
 //executed from displayQuestion(). starts submit listener on question, prevents refresh, and executes next function
 function submitListener() {
