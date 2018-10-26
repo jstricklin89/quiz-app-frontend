@@ -28,7 +28,7 @@ function showHideLeaderboardDiv() {
 
 //add questions right, and questions wrong to the user div
 function displayUserStats() {
-
+  alert('we ran out of time. feature will come later. or not...')
 }
 
 //add questions right, and questions wrong to the leaderboard div
