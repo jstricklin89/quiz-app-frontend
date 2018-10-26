@@ -8,10 +8,6 @@ class Category {
 
   showCategory() {
     const categoryContainer = document.getElementById("category-id");
-
-    // const cardBody = document.querySelector("card-body");
-    // const cardImg = document.getElementById("card-img");
-    // const cardTitle = document.querySelector("card-title");
     const HTMLString = `<div class="card" style="width: 18rem;">
       <img id="card-img" class="card-img-top" src="${
         this.img
@@ -25,10 +21,10 @@ class Category {
       </div>
     </div>`;
     categoryContainer.innerHTML += HTMLString;
-    //to render a category, you need to iterate over the category object and pull out the values: we need to display a title, image, and a button.
 
     return `<p>This is the Category: ${this.name}</p>`;
   }
+  
 }
 
 Category.all = [];
