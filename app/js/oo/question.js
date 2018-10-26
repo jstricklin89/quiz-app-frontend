@@ -15,20 +15,37 @@ class Question {
     const ac1 = document.getElementById("answerText1");
     const ac2 = document.getElementById("answerText2");
     const ac3 = document.getElementById("answerText3");
-    const correctAns = document.getElementById("answerText4");
-    const correctRadio = document.getElementById("answerRadio4");
+    const ac4 = document.getElementById("answerText4");
+    //const correctRadio = document.getElementById("answerRadio4");
     const qForm = document.getElementById("question-form");
 
-    //create array of the ac1-3, take the values and randomize their order. You'll put the values of the array randomized into each innerText.
+    //the question is not returning the right boolean value when correct is selected. It seems to default to false because when I answer correctly I get correct_answer: false.
 
+    let questions = [this.ac_1, this.ac_2, this.ac_3, this.correct_answer];
+    shuffleArray(questions);
     q.innerText = `${this.name}`;
-    ac1.innerText = `${this.ac_1}`;
-    ac2.innerText = `${this.ac_2}`;
-    ac3.innerText = `${this.ac_3}`;
-    correctAns.innerText = `${this.correct_answer}`;
-    correctRadio.dataset.id = "correct";
+    ac1.innerText = `${questions[0]}`;
+    ac2.innerText = `${questions[1]}`;
+    ac3.innerText = `${questions[2]}`;
+    ac4.innerText = `${questions[3]}`;
+    const elements = [ac1, ac2, ac3, ac4];
+    for (let i = 0; i < 4; i++) {
+      if (elements[i].innerText === this.correct_answer) {
+        elements[i].dataset.id = "correct";
+      }
+    }
+    //correctRadio.dataset.id = "correct";
     qForm.dataset.id = `${this.id}`;
+  }
+}
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // eslint-disable-line no-param-reassign
   }
 }
 
 Question.all = [];
+
+//when someone clicks submit, it should clear the radio button selection.
+//we need to check the vailidity of the data. take quiz on front end and make sure that it's putting the right data in the database and notices that the correct answer is selected.
