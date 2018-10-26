@@ -19,8 +19,6 @@ class Question {
     //const correctRadio = document.getElementById("answerRadio4");
     const qForm = document.getElementById("question-form");
 
-    //the question is not returning the right boolean value when correct is selected. It seems to default to false because when I answer correctly I get correct_answer: false.
-
     let questions = [this.ac_1, this.ac_2, this.ac_3, this.correct_answer];
     shuffleArray(questions);
     q.innerText = `${this.name}`;
@@ -31,10 +29,9 @@ class Question {
     const elements = [ac1, ac2, ac3, ac4];
     for (let i = 0; i < 4; i++) {
       if (elements[i].innerText === this.correct_answer) {
-        elements[i].dataset.id = "correct";
+        elements[i].previousElementSibling.dataset.id = "correct";
       }
     }
-    //correctRadio.dataset.id = "correct";
     qForm.dataset.id = `${this.id}`;
   }
 }
@@ -46,6 +43,3 @@ function shuffleArray(array) {
 }
 
 Question.all = [];
-
-//when someone clicks submit, it should clear the radio button selection.
-//we need to check the vailidity of the data. take quiz on front end and make sure that it's putting the right data in the database and notices that the correct answer is selected.
