@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchQuestions()
   fetchCategories()
   fetchAnsweredQuestions()
+  fetchLeaderboardStats()
   //hide questions, categories, and login at pageload
   questionForm.style.display = "none";
   catCards.style.display = "none";

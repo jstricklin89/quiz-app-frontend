@@ -33,7 +33,10 @@ function displayUserStats() {
 
 //add questions right, and questions wrong to the leaderboard div
 function displayLeaderboardStats() { 
-
+  let correctAnsCount = leaderboardStats.filter(obj => {
+    obj.correct_answer === true
+  }).length
+  console.log(correctAnsCount)
 }
 
 
