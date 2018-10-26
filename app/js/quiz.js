@@ -22,6 +22,7 @@ function displayQuestion() {
     questionForm.style.display = "none";
     filteredQuestions = [];
     selectedRadioQId = "incorrect";
+    fetchLeaderboardStats()
   }
 }
 //captures all question radio events into a global variable. either 'correct' or 'incorrect' via dataset.id
